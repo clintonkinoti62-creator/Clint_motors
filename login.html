@@ -1,95 +1,96 @@
-<!DOCTYPE html>
-<html lang="en">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+    PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Clint motors | Home</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clint motors | Home</title>
 
-<style>
-body {
-  margin:0;
-  font-family:Arial,sans-serif;
-  background:#f4f4f4;
-}
-nav {
-  background:#111;
-  color:white;
-  padding:12px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-nav a {color:white;text-decoration:none;margin-left:15px;}
-nav button {background:#ff6600;color:white;border:none;padding:6px 12px;cursor:pointer;}
-#welcome {background:linear-gradient(90deg,#ff6600,#ffcc00);color:white;padding:15px;text-align:center;font-size:18px;}
-#cars {display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:15px;padding:15px;}
-.car {background:white;padding:12px;border-radius:8px;box-shadow:0 0 6px rgba(0,0,0,0.2);}
-.car img {width:100%;height:180px;object-fit:cover;border-radius:5px;}
-.car ul {padding-left:18px;font-size:14px;}
-.car video {width:100%;margin:5px 0;border-radius:5px;}
-.car button {width:100%;padding:10px;background:#ff6600;color:white;border:none;border-radius:5px;cursor:pointer;font-weight:bold;font-size:14px;}
-</style>
+  <style type="text/css">
+    body {
+      margin:0;
+      font-family:Arial,sans-serif;
+      background:#f4f4f4;
+    }
+    nav {
+      background:#111;
+      color:white;
+      padding:12px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+    nav a {color:white;text-decoration:none;margin-left:15px;}
+    nav button {background:#ff6600;color:white;border:none;padding:6px 12px;cursor:pointer;}
+    #welcome {background:linear-gradient(90deg,#ff6600,#ffcc00);color:white;padding:15px;text-align:center;font-size:18px;}
+    #cars {display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:15px;padding:15px;}
+    .car {background:white;padding:12px;border-radius:8px;box-shadow:0 0 6px rgba(0,0,0,0.2);}
+    .car img {width:100%;height:180px;object-fit:cover;border-radius:5px;}
+    .car ul {padding-left:18px;font-size:14px;}
+    .car video {width:100%;margin:5px 0;border-radius:5px;}
+    .car button {width:100%;padding:10px;background:#ff6600;color:white;border:none;border-radius:5px;cursor:pointer;font-weight:bold;font-size:14px;}
+  </style>
 </head>
 
 <body>
 
-<nav>
-  <b>Clint motors</b>
-  <div>
-    <a href="cart.html">Cart</a>
-    <a href="branches.html">Branches</a>
-    <a href="admin.html">Admin</a>
-    <button onclick="logout()">Logout</button>
-  </div>
-</nav>
-
-<div id="welcome"></div>
-<div id="cars"></div>
-
-<script>
-const user = localStorage.getItem("catUser") || "Guest";
-document.getElementById("welcome").innerText = "Welcome " + user + " — Browse our 15 premium cars";
-const cars = [
- {name:"Toyota Premio",price:1200000,img:"2p.jpeg",video:"2v.mp4",features:["1800cc Engine","Automatic","Petrol","ABS","Airbags"]},
- {name:"Mazda CX-5",price:2800000,img:"1p.jpeg",video:"1v.mp4",features:["2200cc Engine","Diesel","AWD","Cruise Control","Sunroof"]},
- {name:"Subaru Forester",price:2600000,img:"3p.jpeg",video:"3v.mp4",features:["2000cc Engine","AWD","Petrol","EyeSight","Hill Assist"]},
- {name:"Toyota Harrier",price:3200000,img:"4p.jpeg",video:"4v.mp4",features:["2400cc Engine","Automatic","Leather Seats","ABS","Cruise Control"]},
- {name:"Nissan X-Trail",price:2400000,img:"5p.jpeg",video:"5v.mp4",features:["2000cc Engine","AWD","Eco Mode","ABS","Airbags"]},
- {name:"BMW X3",price:5200000,img:"6p.jpeg",video:"6v.mp4",features:["2000cc Turbo","Automatic","Leather","Sport Mode","ABS"]},
- {name:"Mercedes C200",price:4500000,img:"7p.jpeg",video:"7v.mp4",features:["2000cc Engine","Luxury Interior","Automatic","ABS","Airbags"]},
- {name:"Toyota Prado",price:6500000,img:"8p.jpeg",video:"8v.mp4",features:["2800cc Engine","4WD","Diesel","Leather","ABS"]},
- {name:"Toyota Land Cruiser",price:8500000,img:"9p.jpeg",video:"9v.mp4",features:["4600cc Engine","4WD","Diesel","Off-road","Cruise"]},
- {name:"Subaru XV",price:2300000,img:"10p.jpeg",video:"10v.mp4",features:["2000cc Engine","AWD","Eco Mode","Automatic","ABS"]},
- {name:"Mazda Demio",price:950000,img:"11p.jpeg",video:"11v.mp4",features:["1300cc Engine","Automatic","Petrol","ABS","Eco Mode"]},
- {name:"Toyota Axio",price:980000,img:"12p.jpeg",video:"12v.mp4",features:["1500cc Engine","Hybrid","Automatic","Eco Mode","ABS"]},
- {name:"Toyota Hilux",price:4200000,img:"13p.jpeg",video:"13v.mp4",features:["2400cc Engine","Diesel","4WD","Pickup","ABS","Off-road"]},
- {name:"Isuzu D-Max",price:3900000,img:"14p.jpeg",video:"14v.mp4",features:["2500cc Engine","Diesel","4WD","Pickup","ABS","Torque Boost"]},
- {name:"Nissan Note",price:900000,img:"15p.jpeg",video:"15v.mp4",features:["1200cc Engine","Automatic","Eco Mode","ABS","Airbags"]}
-];
-const container = document.getElementById("cars");
-cars.forEach((car,i)=>{
-  container.innerHTML += `
-    <div class="car">
-      <img src="${car.img}">
-      <h3>${car.name}</h3>
-      <p><b>KES ${car.price.toLocaleString()}</b></p>
-      <ul>${car.features.map(f=>`<li>${f}</li>`).join("")}</ul>
-      <video controls src="${car.video}"></video>
-      <button onclick="addToCart(${i})">🛒 Add to Cart</button>
+  <nav>
+    <b>Clint motors</b>
+    <div>
+      <a href="cart.html">Cart</a>
+      <a href="branches.html">Branches</a>
+      <a href="admin.html">Admin</a>
+      <button type="button" onclick="logout()">Logout</button>
     </div>
-  `;
-});
-function addToCart(i){
-  let cart = JSON.parse(localStorage.getItem("cart")) || [];
-  cart.push(cars[i]);
-  localStorage.setItem("cart", JSON.stringify(cart));
-  alert(cars[i].name + " added to cart");
-}
-function logout(){
-  localStorage.clear();
-  window.location="login.html";
-}
-</script>
+  </nav>
+  <div id="welcome"></div>
+  <div id="cars"></div>
+  <script type="text/javascript">
+    var user = localStorage.getItem("catUser") || "Guest";
+    document.getElementById("welcome").innerText = "Welcome " + user + " — Browse our 15 premium cars";
+    var cars = [
+      {name:"Toyota Premio",price:1200000,img:"2p.jpeg",video:"2v.mp4",features:["1800cc Engine","Automatic","Petrol","ABS","Airbags"]},
+      {name:"Mazda CX-5",price:2800000,img:"1p.jpeg",video:"1v.mp4",features:["2200cc Engine","Diesel","AWD","Cruise Control","Sunroof"]},
+      {name:"Subaru Forester",price:2600000,img:"3p.jpeg",video:"3v.mp4",features:["2000cc Engine","AWD","Petrol","EyeSight","Hill Assist"]},
+      {name:"Toyota Harrier",price:3200000,img:"4p.jpeg",video:"4v.mp4",features:["2400cc Engine","Automatic","Leather Seats","ABS","Cruise Control"]},
+      {name:"Nissan X-Trail",price:2400000,img:"5p.jpeg",video:"5v.mp4",features:["2000cc Engine","AWD","Eco Mode","ABS","Airbags"]},
+      {name:"BMW X3",price:5200000,img:"6p.jpeg",video:"6v.mp4",features:["2000cc Turbo","Automatic","Leather","Sport Mode","ABS"]},
+      {name:"Mercedes C200",price:4500000,img:"7p.jpeg",video:"7v.mp4",features:["2000cc Engine","Luxury Interior","Automatic","ABS","Airbags"]},
+      {name:"Toyota Prado",price:6500000,img:"8p.jpeg",video:"8v.mp4",features:["2800cc Engine","4WD","Diesel","Leather","ABS"]},
+      {name:"Toyota Land Cruiser",price:8500000,img:"9p.jpeg",video:"9v.mp4",features:["4600cc Engine","4WD","Diesel","Off-road","Cruise"]},
+      {name:"Subaru XV",price:2300000,img:"10p.jpeg",video:"10v.mp4",features:["2000cc Engine","AWD","Eco Mode","Automatic","ABS"]},
+      {name:"Mazda Demio",price:950000,img:"11p.jpeg",video:"11v.mp4",features:["1300cc Engine","Automatic","Petrol","ABS","Eco Mode"]},
+      {name:"Toyota Axio",price:980000,img:"12p.jpeg",video:"12v.mp4",features:["1500cc Engine","Hybrid","Automatic","Eco Mode","ABS"]},
+      {name:"Toyota Hilux",price:4200000,img:"13p.jpeg",video:"13v.mp4",features:["2400cc Engine","Diesel","4WD","Pickup","ABS","Off-road"]},
+      {name:"Isuzu D-Max",price:3900000,img:"14p.jpeg",video:"14v.mp4",features:["2500cc Engine","Diesel","4WD","Pickup","ABS","Torque Boost"]},
+      {name:"Nissan Note",price:900000,img:"15p.jpeg",video:"15v.mp4",features:["1200cc Engine","Automatic","Eco Mode","ABS","Airbags"]}
+    ];
+    var container = document.getElementById("cars");
+    for(var i=0;i<cars.length;i++){
+      var car = cars[i];
+      container.innerHTML += 
+        '<div class="car">' +
+          '<img src="' + car.img + '" alt="' + car.name + '" />' +
+          '<h3>' + car.name + '</h3>' +
+          '<p><b>KES ' + car.price.toLocaleString() + '</b></p>' +
+          '<ul>' + car.features.map(function(f){return '<li>'+f+'</li>';}).join('') + '</ul>' +
+          '<video controls="controls"><source src="' + car.video + '" type="video/mp4" /></video>' +
+          '<button type="button" onclick="addToCart(' + i + ')">🛒 Add to Cart</button>' +
+        '</div>';
+    }
+    function addToCart(i){
+      var cart = JSON.parse(localStorage.getItem("cart")) || [];
+      cart.push(cars[i]);
+      localStorage.setItem("cart", JSON.stringify(cart));
+      alert(cars[i].name + " added to cart");
+    }
+    function logout(){
+      localStorage.clear();
+      window.location="login.html";
+    }
+  </script>
 
 </body>
 </html>
